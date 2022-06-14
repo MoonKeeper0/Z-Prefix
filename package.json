@@ -1,0 +1,19 @@
+{
+  "name": "sdi-blended-full-stack-project-scaffold",
+  "version": "1.0.0",
+  "description": "registrar app",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bjhufstetler/sdi-blended-full-stack-project-scaffold.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bjhufstetler/sdi-blended-full-stack-project-scaffold/issues"
+  },
+  "homepage": "https://github.com/bjhufstetler/sdi-blended-full-stack-project-scaffold#readme"
+}

@@ -1,0 +1,52 @@
+.shift0 {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 0.8rem;
+  padding-left: 5px;
+  min-width: 130px;
+  border-radius: 5px;
+  border: 1px solid white;
+  margin: 5px;
+}
+.shift1 {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 0.8rem;
+  padding-left: 5px;
+  min-width: 130px;
+  border-radius: 5px;
+  border: 1px solid white;
+  margin: 5px;
+}
+
+.shiftTitle {
+  letter-spacing: 0.8px;
+  margin-bottom: 0rem;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.roster {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  padding: 0.8rem;
+  padding-left: 5px;
+  min-width: 400px;
+  border-radius: 5px;
+  border: 1px solid white;
+  right: center;
+  background-color: rgba(18, 16, 22, 0.95);
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+}
+
+ul {
+  padding: 10px;
+  list-style-type: none;
+  columns: 4;
+}
+
+li {
+  padding-top: 3px;
+}
