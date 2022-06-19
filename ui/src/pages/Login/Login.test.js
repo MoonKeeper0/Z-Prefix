@@ -4,12 +4,12 @@ import { MemoryRouter } from 'react-router';
 import userEvent from '@testing-library/user-event'
 
 import Main from '../Main/Main';
-import AdminLogin from './AdminLogin';
+import Login from './Login';
 
 const setup = () => {
   render(
     <MemoryRouter initialEntries={['/']}>
-        <AdminLogin />
+        <Login />
     </MemoryRouter>
   );
 }

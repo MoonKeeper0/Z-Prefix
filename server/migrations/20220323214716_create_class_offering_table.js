@@ -2,17 +2,18 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
+
 exports.up = function(knex) {
     return knex.schema
-    .createTable('class_offering', table => {
+    .createTable('post', table => {
       table.increments('id');
-      table.integer('id_class');
-      table.integer('id_shift').notNullable();
-      table.foreign('id_class').references('class.id')
+      table.string('title', 255).notNullable();
+      table.string('body', 255);
+      table.integer('id_user');
+      table.foreign('id_user').references('user.id')
       .deferrable('deferred')
       .onDelete('SET NULL');;
-      table.foreign('id_shift').references('shift.id');
-    })
+          })
 };
 
 /**
@@ -20,16 +21,11 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-    return knex.schema.alterTable('class_offering', table => {
-        table.dropForeign('id_class');
+    return knex.schema.alterTable('post', table => {
+        table.dropForeign('id_user');
     })
-    .then(() => {
-        return knex.schema.alterTable('class_offering', table => {
-            table.dropForeign('id_shift');
-        })
-    })
-    .then(() => {
-        return knex.schema.dropTableIfExists('class_offering');
+        .then(() => {
+        return knex.schema.dropTableIfExists('post');
     })
     
 };

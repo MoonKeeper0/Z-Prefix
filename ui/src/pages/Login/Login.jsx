@@ -6,19 +6,19 @@ import {signInWithEmailAndPassword } from "firebase/auth";
 
 import {Link, useNavigate} from 'react-router-dom';
 
-import styles from './AdminLogin.module.css'
+import styles from './Login.module.css'
 
-const AdminLogin = () => {
+const Login = () => {
 
   const context = useContext(AppContext);
-  const [email, setEmail] = useState('admin@fake.com');
+  const [username, setUsername] = useState('admin@fake.com');
   const [password, setPassword] = useState('test12345');
   const navigate = useNavigate();
   
   const handleSubmit = (e) => {
     e.preventDefault();
     const auth = registrarAuth;
-    signInWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, username, password)
       .then( (cred) => {
         context.user = cred.user
       })
@@ -33,8 +33,8 @@ const AdminLogin = () => {
   return (
     <form className={styles.form} onSubmit={handleSubmit} >
       <label>
-        <span>Email:</span>
-        <input data-testid="email-test" type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+        <span>Username:</span>
+        <input data-testid="username-test" type="email" value={username} onChange={(e) => setUsername(e.target.value)}/>
       </label>
       <label>
         <span>Password:</span>
@@ -43,8 +43,9 @@ const AdminLogin = () => {
       <button className={styles.btn}>Click to Complete Login</button>
       <br />
       <Link to='/'>Return to Main Schedule</Link>
+      
     </form>
   )
 }
 
-export default AdminLogin;
+export default Login;
