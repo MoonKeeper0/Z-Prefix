@@ -6,7 +6,7 @@ import {signInWithEmailAndPassword } from "firebase/auth";
 
 import {Link, useNavigate} from 'react-router-dom';
 
-import styles from './Login.module.css'
+import styles from './NewUser.module.css'
 
 const NewUser = () => {
 
@@ -45,11 +45,11 @@ const NewUser = () => {
         
       <label>
         <span>Username:</span>
-        <input data-testid="nickname-test" type="email" value={nickname} onChange={(e) => setNickname(e.target.value)}/>
+        <input data-testid="nickname-test" type="text" value={nickname} onChange={(e) => setNickname(e.target.value)}/>
       </label>
       <label>
         <span>Nickname:</span>
-        <input data-testid="username-test" type="email" value={username} onChange={(e) => setUsername(e.target.value)}/>
+        <input data-testid="username-test" type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
       </label>
       <label>
         <span>Password:</span>

@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 
 app.get('/api/users', (req, res) => {
   knex('user')
-    .orderBy(['nickname', 'username'])
+    .orderBy(['id'])
     .then(data => res.status(200).json(data))
     .catch(err => {throw Error(err)})
 })
@@ -39,7 +39,17 @@ SELECT *
 
 app.get('/api/users/:id', (req, res) => {
   knex('user')
-    .where('id', req.params.id)
+  
+    .where('user.id', req.params.id)
+    .then(data => res.status(200).json(data))
+    .catch(err => {throw Error(err)})
+})
+
+app.get('/api/users/posts/:id', (req, res) => {
+  knex('user')
+  .join('post', 'user.id', 'post.id_user')
+  .select('post.id', 'user.username', 'post.title', 'post.body', 'post.created_at')
+    .where('user.id', req.params.id)
     .then(data => res.status(200).json(data))
     .catch(err => {throw Error(err)})
 })
@@ -70,6 +80,10 @@ SELECT *
 
 app.get('/api/posts', (req, res) => {
   knex('post')
+  .join('user', 'user.id', 'post.id_user')
+  .select('post.id', 'user.username', 'post.title', 'post.body', 'post.created_at')
+  
+  
   .orderBy(['id'])
     .then(data => res.status(200).json(data))
     .catch(err => {throw Error(err)})

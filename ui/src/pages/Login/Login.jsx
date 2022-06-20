@@ -27,7 +27,7 @@ const Login = () => {
         const errorMsg = error.message;
         throw Error(`${errorCode}: ${errorMsg}`)
       })
-      .finally( () => navigate('/'));
+      .finally( () => navigate('/myblogs'));
   } 
 
   return (

@@ -9,8 +9,10 @@ exports.up = function(knex) {
       table.increments('id');
       table.string('title', 255).notNullable();
       table.string('body', 255);
+      table.timestamp('created_at').defaultTo(knex.fn.now());
       table.integer('id_user');
       table.foreign('id_user').references('user.id')
+      .inTable('users')
       .deferrable('deferred')
       .onDelete('SET NULL');;
           })
