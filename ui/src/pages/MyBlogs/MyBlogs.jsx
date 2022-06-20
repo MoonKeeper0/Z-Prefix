@@ -46,7 +46,7 @@ return (
     <div >
     <Link to="/">Home</Link>
     <Link to="/newpost">     NewPost</Link>
-    <Link to="/updatepost">     NewPost</Link>
+    <Link to="/updatepost">     UpdatePost</Link>
     <Link to="/deletepost"> DeletePost</Link>
     <Link to="/blogs">      AllBlogs</Link>
 
