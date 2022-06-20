@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-
+import React, {useEffect, useState,useContext} from 'react';
+import { AppContext } from '../../AppContext';
 // Our Components
 import Loading from '../Loading/Loading';
 
@@ -12,8 +12,9 @@ import { Link } from 'react-router-dom';
 const UpdatePost = ({user = 1}) =>{
 
     
-
-    const [post, setPost] = useState(['Select a Class']);
+  const context = useContext(AppContext);
+  user = context.user;
+    const [post, setPost] = useState(['Select a Post']);
     const [fetchErr, setFetchErr] = useState(null);
     const [loading, setLoading] = useState(true);
     const [patchID, setPatchID] = useState(0);
@@ -21,9 +22,9 @@ const UpdatePost = ({user = 1}) =>{
     const [patchValue, setPatchValue] = useState(0);
     const [patchClass, setPatchClass] = useState({});
     const [disabled, setDisabled] = useState(true);
-    const [buttonText, setButtonText] = useState('Disabled Until Class Selected');
+    const [buttonText, setButtonText] = useState('Disabled Until Filled Out');
     const URL = `http://localhost:8081/api/users/posts/${user}`;
-
+   
     useEffect(() => {
         fetch(URL)
         .then(response => {
@@ -34,7 +35,7 @@ const UpdatePost = ({user = 1}) =>{
             return response.send('Error fetching data');
           }
         })
-        .then(json => json ? setPost(['Select a Class', ...json]) : setPost(['Select a Class']))
+        .then(json => json ? setPost(['Select a Post', ...json]) : setPost(['Select a Post']))
         .catch( error => {
           const errorCode = error.code;
           const errorMsg = error.message;
@@ -119,7 +120,7 @@ const UpdatePost = ({user = 1}) =>{
           <div >
             <Link to="/">Home</Link>
             <Link to="/newpost">     NewPost</Link>
-            <Link to="/updatepost">     NewPost</Link>
+            <Link to="/myblogs">     MyBlog</Link>
             <Link to="/blogs">      Blogs</Link>
 
         </div>
@@ -128,14 +129,14 @@ const UpdatePost = ({user = 1}) =>{
             <div>
               <RuxSelect value={patchID} label={'Select Post'} onRuxchange={(e) => setPatchID(e.target.value)} >
                 {post.map( (item,idx) => {
-                    if (idx === 0) return <RuxOption value={0} label={'Select a Class'} key={idx} />
+                    if (idx === 0) return <RuxOption value={0} label={'Select a Post'} key={idx} />
                     else return <RuxOption value={item.id} label={`${item.id} ${item.title}`} key={idx} /> 
                   })
                 }
               </RuxSelect>
   
-              <RuxSelect value={patchItem} label={'Select Class Item to Update'} onRuxchange={(e) => setPatchItem(e.target.value)} >
-                {Object.keys(post[1]).map( (item,idx) => {
+              <RuxSelect value={patchItem} label={'Select Post Category to Update'} onRuxchange={(e) => setPatchItem(e.target.value)} >
+                {Object.keys(post[1])?.map( (item,idx) => {
                     if (idx === 0) return <RuxOption value={0} label={'Select an item'} key={idx} />
                     else return <RuxOption value={item} label={`${item}`} key={idx} /> 
                   })

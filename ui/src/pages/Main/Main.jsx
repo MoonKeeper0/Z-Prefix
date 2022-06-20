@@ -13,14 +13,17 @@ const Main = () => {
 
 
   return (
-    
+    <>
+    <h3>Landing Page</h3>
         <div className={mainStyles.bottomListLink}>
+          
          <Link to="/login">Login</Link>
          <Link to="/">Home</Link>
          <Link to="/blogs">Blogs</Link>
-
+         <Link to="/newuser">New User</Link>
+    
         </div>
-        
+      </>  
   )
 }
 

@@ -1,4 +1,4 @@
-## Registrar Visualization System
+## Z-prefix Test
 
 ## Table of Contents
 
@@ -16,103 +16,7 @@
 
 # Overview
 
-### Problem Statement
-- Statement: As a User, I want to be able to visit a website in order to see what classes are being offered, on what days of the week, in what rooms, and being taught by which professors/instructors. Currently, there is no easy way to access this information, aside from contacting the registration department. Our squadron is a tech house, and we want to develop a pipeline-style (block class system).
 
-- Scope: This project demonstrates our group's ability to develop a full stack application. We will be making a database with several tables to hold registrar data, an api to interact with the data tables, and a front end to visualize the data and grant users endpoints with relevant queries.
-
-### User Profiles
-- Specialist Snuffy
-  - A new student who just wants to stay out of trouble
-  - She needs to easily access her schedule and would prefer if the app emailed her the schedule every week so she never needed to visit the website
-  - She would like an email if her schedule changes
-  - She doesn't need to edit any of the information in the app
-  - She sometimes needs to see a map to know where she's going
-  - She might need her professor's phone number or email in case of emergency
-
-- Technical Sergeant Newie
-  - A new professor who needs to be prepared to teach
-  - He needs to easily access his schedule and project out a few months into the future
-  - He would like an email if any changes are made to his schedule, and a weekly email of his next week's responsibilities
-  - He will need to know the names and contact information of everyone in each class he teaches
-  - He sometimes needs to see a map to know where he's going
-  - He doesn't need to edit any information in the app
-
-- Captain Daniels
-  - A department head who needs to be able to assign her people to tasks
-  - She needs to be able to see what classes her are being taught in her department during a semester
-  - She needs to know which classes do not have instructors assigned to them
-  - She would like an easy method to assign her faculty to several classes at a time
-  - She needs to know which rooms/facutly are available for each class
-  - She needs to be able to place leave / appointments for her faculty into the schedule
-
-- Colonel Walker
-  - The commander of the squadron who needs situational awareness at all times
-  - She needs to be able to click a single button and get a legible and easily understandable overview of all activities happening during the week
-
-- Mr. Reggie
-  - The registrar who doesn't want to spend his entire life adding information one line at a time
-  - He needs to easily be able to audit the registry and determine if:
-    - Every student is enrolled in their required classes
-    - No instructors / rooms are double booked
-    - He needs to be able to reserve rooms for administrative purposes
-
-### Minimum Viable Product (MVP)
-
-- As a non-admin User, when I visit the Registrar Visualization System web application, I want to be able to see the following on the screen:
-  - [ ] The days of the week in a calendar timeline
-  - [ ] A list of classes/faculty/room being used during each block of time
-- As a non-admin User, when I search for a name, faculty, room, or class, the calendar view
-  - [ ] Updates to show only filtered information based on the search
-- As an admin User, using the web application interface (not the command line), I can add, update, remove, delete:
-  - [ ] new classes
-  - [ ] new faculty
-  - [ ] new students
-  - [ ] new rooms
-  - [ ] student / faculty / room / class assignments
-
-.... actual User personas
-- as a student (name Specialist Snuffy) ....
-- as a faculty member (name Capt Huf) ....
-- as a registrar (name Mrs. Puff) ....
-
-We also plan to use the USSF Styling Guide
-
-![](https://github.com/bjhufstetler/sdi-blended-full-stack-project-scaffold/blob/master/Wireframe.PNG?raw=true)
-
-# Description
-
-This schoolhouse teaches hundreds of students per year.
-- Each year consists of 7 semesters (7 weeks long)
-- Each week consists of 4 shifts (Mon/Wed AM, Mon/Wed PM, Tues/Thur AM, Tues/Thur PM)
-- Every student must take 4 classes per semester for 2 (Enlisted) or 3 (Officer) semesters
-- Classes are assigned a shift, faculty member, and room
-- Each class meets for 14 sessions per semester
-- Every session that the class is taught may have a different faculty member or room assigned to it
-- Students are assigned to classes
-- During peak semesters, there may be up to 18 classes being taught every shift and some classes may have up to 9 offerings throughout the week
-
-Semester 1 Courses:
- - OEW 101
- - SEW 101
- - FUN 101
- - SBM 101
-Semester 2 Courses:
- - RED 101
- - RED 102
- - BLU 101
- - BLU 102
-Semester 3 Courses:
- - OEW 201
- - SEW 201
- - FUN 201
- - SBM 201
-
-Tools that can help you capture a screen recording include:
-
-- [Recordit](https://recordit.co/) 
-- [Asciinema](https://asciinema.org/) 
-- [ttygif](https://github.com/icholy/ttygif) 
 
 # Installation
 
@@ -120,7 +24,7 @@ How can another developer get your project up and running on their own? What dep
 
 ### How to Install 
 1. clone the repo
-2. navigate to registrar-ui folder
+2. navigate to ui folder
 3. npm install
 4. navigate up and down into server folder
 5. npm install
@@ -193,24 +97,11 @@ The following commands were run:
 
 # API Endpoints
 
-GET /api/roster/:id
-GET /apr/rosters/:date
+GET /api/users/posts/:id
+GET /api/users/
+GET /api/posts/
+POST/PATCH /api/posts/
 
-(GET/POST) /api/rooms
-(GET/PATCH/DELETE) /api/rooms/:id
-
-(GET/POST) /api/faculty
-(GET/PATCH/DELETE) /api/faculty/:id
-
-(GET/POST) /api/classes
-(GET/PATCH/DELETE) /api/classes/:id
-
-(GET/POST) /api/students
-(GET/PATCH/DELETE) /api/students/:id
-
-GET /api/week/:date
-
-GET /api/schedule?
 
 # Related Projects (Optional)
 
@@ -218,13 +109,13 @@ Links to other repositories that are related to the current one. Are there partn
 
 # Team Members
 
-Tony Kelly, Jelani Washington, Brandon Hufstetler
+Jelani Washington
 
 # Dependencies
   react-router
   react-router-dom
   @astrouxds/react
-  firebase
+  
   knex
   express
   pg

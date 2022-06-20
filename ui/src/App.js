@@ -11,12 +11,15 @@ import MyBlogs from "./pages/MyBlogs/MyBlogs";
 import NewPost from "./pages/NewPost/NewPost";
 
 import UpdatePost from "./pages/UpdatePost/UpdatePost";
+import FullPostPage from "./pages/FullPostPage/FullPostPage";
+import DeletePost from "./pages/DeletePost/DeletePost";
 const App = () => {
   return (
     <Router>
       
-          
+      <AppContext.Provider value={ { user: 0} }>
           <Routes>
+          
             <Route path="/" element={<Main />} />
             <Route path="/login" element={<Login/>} />
             <Route path="/blogs" element={<Blogs/>} />
@@ -24,9 +27,12 @@ const App = () => {
             <Route path="/MyBlogs" element={<MyBlogs/>}/>
             <Route path="/newpost" element={<NewPost/>}/>
             <Route path="/updatepost" element={<UpdatePost/>}/>
+            <Route path="/posts/:id" element={<FullPostPage/>}/>
+            <Route path="/deletepost" element={<DeletePost/>}/>
             <Route path="*" element={<PageNotFound />} />
             
           </Routes>
+          </AppContext.Provider>
        
     </Router>
   )

@@ -1,19 +1,18 @@
 import React, {useState,useContext} from "react";
 import { AppContext } from "../../AppContext";
 
-import {registrarAuth} from '../../firebase/config';
-import {signInWithEmailAndPassword } from "firebase/auth";
+
 
 import {Link, useNavigate} from 'react-router-dom';
 
 import styles from './NewUser.module.css'
 
 const NewUser = () => {
-
+  const navigate =useNavigate();
   const context = useContext(AppContext);
-  const [username, setUsername] = useState('admin@fake.com');
-  const [nickname, setNickname] = useState('admin@fake.com');
-  const [password, setPassword] = useState('test12345');
+  const [username, setUsername] = useState('');
+  const [nickname, setNickname] = useState('');
+  const [password, setPassword] = useState('');
   
   const baseURL = 'http://localhost:8081/api/';
 
@@ -37,12 +36,14 @@ const NewUser = () => {
           throw new Error('Cannot convert response to json');
         }
       })
+      .finally(()=>{navigate('/')})
   }
   
 
   return (
+    
     <form className={styles.form} onSubmit={handleSubmit} >
-        
+        <h3>New User</h3>
       <label>
         <span>Username:</span>
         <input data-testid="nickname-test" type="text" value={nickname} onChange={(e) => setNickname(e.target.value)}/>
@@ -57,7 +58,7 @@ const NewUser = () => {
       </label>
       <button className={styles.btn}>Click to Add</button>
       <br />
-      <Link to='/'>Return to Main Schedule</Link>
+      <Link to='/'>Return to Landing Page</Link>
       
     </form>
   )

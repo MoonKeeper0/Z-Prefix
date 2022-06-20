@@ -25,8 +25,12 @@ app.use((req, res, next) => {
 *********************************************/
 
 app.get('/api/users', (req, res) => {
+//knex('user').upsert('password', 1);
+
   knex('user')
+  
     .orderBy(['id'])
+    
     .then(data => res.status(200).json(data))
     .catch(err => {throw Error(err)})
 })
@@ -97,7 +101,9 @@ SELECT *
 
 app.get('/api/posts/:id', (req, res) => {
   knex('post')
-    .where('id', req.params.id)
+  .join('user', 'user.id', 'post.id_user')
+  .select('post.id', 'user.username', 'post.title', 'post.body', 'post.created_at')
+    .where('post.id', req.params.id)
     .then(data => res.status(200).json(data))
     .catch(err => {throw Error(err)})
 })
